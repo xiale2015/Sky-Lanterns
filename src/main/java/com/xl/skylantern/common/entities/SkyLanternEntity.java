@@ -271,7 +271,7 @@ public class SkyLanternEntity extends Mob {
                 if (dist >= ModConfig.COMMON.lightUpdateDistanceAccuracy.get() || level().getBlockState(posLight).getBlock() != ModBlocks.LIT.get()) {
                     clearCurrentLightBlock();
                     posLight = blockPosition();
-                    if (level().isEmptyBlock(posLight) && level().getBlockFloorHeight(posLight) + ModConfig.COMMON.lightUpdateDistanceToGround.get() > getY()) {
+                    if (level().isEmptyBlock(posLight)) {
                         level().setBlockAndUpdate(posLight, ModBlocks.LIT.get().defaultBlockState());
                     }
                 }

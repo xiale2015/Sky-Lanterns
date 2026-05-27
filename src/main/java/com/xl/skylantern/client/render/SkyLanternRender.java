@@ -10,8 +10,10 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
+
 
 public class SkyLanternRender extends EntityRenderer<SkyLanternEntity> {
 
@@ -20,6 +22,11 @@ public class SkyLanternRender extends EntityRenderer<SkyLanternEntity> {
     public SkyLanternRender(EntityRendererProvider.Context context) {
         super(context);
         this.model = new PaperLanternPinkModel(context.bakeLayer(PaperLanternPinkModel.LAYER_LOCATION));
+    }
+
+    @Override
+    protected int getBlockLightLevel(SkyLanternEntity entity, BlockPos pos) {
+        return 15;
     }
 
     @Override

@@ -12,7 +12,7 @@ public class LitBlock extends AirBlock {
         super(BlockBehaviour.Properties.of()
                 .noCollission()
                 .air()
-                .lightLevel(state -> 1));
+                .lightLevel(state -> 15));
     }
 
     @Override
