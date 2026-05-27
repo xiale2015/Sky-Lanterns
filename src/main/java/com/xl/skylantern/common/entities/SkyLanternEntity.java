@@ -431,6 +431,7 @@ public class SkyLanternEntity extends Mob {
 
     public void setUnlatched() {
         latched = null;
+        latchedEntity = null;
         entityData.set(IS_LATCHED, (byte) 0);
         if (!level().isClientSide)
             level().playSound(null, this, SoundEvents.ARMOR_EQUIP_LEATHER.value(), SoundSource.NEUTRAL, 1F, 1F);

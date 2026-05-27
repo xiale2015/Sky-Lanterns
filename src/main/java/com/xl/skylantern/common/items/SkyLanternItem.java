@@ -57,6 +57,7 @@ public class SkyLanternItem extends Item {
                 final List<SkyLanternEntity> balloonsNear = level.getEntitiesOfClass(SkyLanternEntity.class, bound);
                 for (SkyLanternEntity balloon : balloonsNear) {
                     if (balloon.latchedEntity == targetEntity) {
+                        balloon.setUnlatched();
                         return InteractionResultHolder.success(player.getItemInHand(hand));
                     }
                 }
@@ -82,6 +83,7 @@ public class SkyLanternItem extends Item {
                 final List<SkyLanternEntity> balloonsNear = player.level().getEntitiesOfClass(SkyLanternEntity.class, bound);
                 for (SkyLanternEntity balloon : balloonsNear) {
                     if (balloon.latchedEntity == entity) {
+                        balloon.setUnlatched();
                         return InteractionResult.SUCCESS;
                     }
                 }
