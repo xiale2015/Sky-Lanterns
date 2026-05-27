@@ -230,6 +230,14 @@ public class SkyLanternEntity extends Mob {
                 setDeltaMovement(motion);
                 move(MoverType.SELF, getDeltaMovement());
 
+                // 被栓绳拉住时，抵消原版栓绳的弹力拉回，让灯悬浮
+                if (this.isLeashed()) {
+                    Vec3 afterMove = getDeltaMovement();
+                    if (afterMove.y() < 0) {
+                        setDeltaMovement(new Vec3(afterMove.x(), afterMove.y() * 0.3D, afterMove.z()));
+                    }
+                }
+
                 motion = getDeltaMovement();
                 if (!level().isClientSide && !this.isLeashed() && this.getLeashHolder() == null) {
                     long time = (this.getId() * 3L) + level().getGameTime() * 3;
