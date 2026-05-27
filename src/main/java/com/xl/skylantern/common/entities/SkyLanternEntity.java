@@ -114,11 +114,8 @@ public class SkyLanternEntity extends Mob {
     }
 
     public static double processYSpeed(double y, net.minecraft.util.RandomSource random) {
-        double a = 0;
         if (y == 0) return 0;
-        a = Math.min(y + random.nextDouble() * 0.1, 0.2F);
-        SkyLanternsReborn.LOGGER.info(String.valueOf(a));
-        return a;
+        return Math.min(y + random.nextDouble() * 0.1, 0.2F);
     }
 
     public EnumColor getColor() {
@@ -143,11 +140,11 @@ public class SkyLanternEntity extends Mob {
 
     @Override
     public void tick() {
-        super.tick();
-
         xo = getX();
         yo = getY();
         zo = getZ();
+
+        super.tick();
 
         this.setNoGravity(true);
         this.setPersistenceRequired();

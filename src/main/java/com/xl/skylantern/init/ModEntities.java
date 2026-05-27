@@ -14,10 +14,10 @@ public class ModEntities {
     public static final DeferredHolder<EntityType<?>, EntityType<SkyLanternEntity>> SKY_LANTERN = ENTITIES.register(
             "sky_lantern",
             () -> EntityType.Builder.<SkyLanternEntity>of(SkyLanternEntity::new, MobCategory.MISC)
-                    .sized(0.5F, 0.5F)
+                    .sized(1.0F, 1.0F)
                     .eyeHeight(0.0F)
-                    .clientTrackingRange(8)
-                    .updateInterval(20)
+                    .clientTrackingRange(64)
+                    .updateInterval(1)
                     .build("sky_lantern")
     );
 }

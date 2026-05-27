@@ -25,21 +25,20 @@ public class SkyLanternRender extends EntityRenderer<SkyLanternEntity> {
     @Override
     public ResourceLocation getTextureLocation(SkyLanternEntity entity) {
         ResourceLocation loc = ResourceLocation.fromNamespaceAndPath(SkyLanternsReborn.MODID, "textures/entities/sky_lantern_" + entity.getColor().getRegistryPrefix() + ".png");
-        SkyLanternsReborn.LOGGER.debug("SkyLantern texture: color={}, registryPrefix={}, path={}", entity.getColor(), entity.getColor().getRegistryPrefix(), loc);
+        // SkyLanternsReborn.LOGGER.debug("SkyLantern texture: color={}, registryPrefix={}, path={}", entity.getColor(), entity.getColor().getRegistryPrefix(), loc);
         return loc;
     }
 
     @Override
     public void render(SkyLanternEntity entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
-        SkyLanternsReborn.LOGGER.debug("SkyLantern render: model={}, color={}", this.model != null ? "NOT NULL" : "NULL", entity.getColor());
+        // SkyLanternsReborn.LOGGER.debug("SkyLantern render: model={}, color={}", this.model != null ? "NOT NULL" : "NULL", entity.getColor());
         poseStack.pushPose();
         poseStack.translate(0, 0.25, 0);
         float scale = 0.25F;
         poseStack.scale(scale, scale, scale);
         poseStack.mulPose(com.mojang.math.Axis.ZP.rotationDegrees(180));
 
-        long time = entity.level().getGameTime();
-        long timeBase = time + (entity.getId() * 10L);
+        long timeBase = (long)(entity.level().getGameTime() + partialTicks) + (entity.getId() * 10L);
         float rate = 5;
 
         float tiltMax = (float) Math.sin(Math.toRadians(((timeBase) * 1F) % 360)) * 5F;
